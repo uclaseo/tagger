@@ -9,7 +9,8 @@ const bodyParser = require('body-parser');
 // you may or may not need to use the database connection in this index.js file.
 // if you need to use it, assign the return value of require('./db') to a variable.
 const db = require('./db');
-
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.static(path.join(__dirname, '../public')));
 // create an express instance 
 
 // hook any middleware you need to into the express instance, including your route handlers
@@ -27,6 +28,14 @@ app.listen(port, function() {
   console.log('Server is running');
 })
 
-app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, '../public/index.html'));
+// app.get('/', function(req, res) {
+//   res.sendFile(path.join(__dirname, '../public/index.html'));
+// })
+
+
+
+app.post('/', function(req, res) {
+  var requestBody = req.body;
+  console.log(requestBody);
+  res.send(requestBody);
 })
