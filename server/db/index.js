@@ -78,11 +78,11 @@ Texts.sync();
 // Users.sycn({force: true})  drops table users
 
 
-Users.create({
-  username: 'Junseok'
-}).then(inseok => {
-  console.log(inseok.get({plain: true}))
-})
+// Users.create({
+//   username: 'Junseok'
+// }).then(inseok => {
+//   console.log(inseok.get({plain: true}))
+// })
 
 
 

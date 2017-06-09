@@ -1,1 +1,7 @@
 /* Your glorious CSS here */
+.angular-working {
+  border-radius: 10px;
+  background: blue;
+  font-size: 20px;
+  color: yellow;
+}
