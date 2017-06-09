@@ -60,7 +60,8 @@ sequelize.authenticate()
 
 const Users = sequelize.define('users', {
   username: {
-    type: Sequelize.STRING()
+    type: Sequelize.STRING(),
+    unique: true
   }
 })
 const Texts = sequelize.define('texts', {
@@ -78,7 +79,7 @@ Texts.sync();
 
 
 Users.create({
-  username: 'Inseok'
+  username: 'Junseok'
 }).then(inseok => {
   console.log(inseok.get({plain: true}))
 })
