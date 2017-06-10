@@ -63,26 +63,25 @@ app.post('/text', function(req, res) {
     title: title,
     text: text
   })
-  .then(function() {
-    res.sendStatus(201);
+  .then(function(results) {
+    res.send(results);
   })
 });
 
 app.post('/user', function(req, res) {
   var userName = req.body.user;
-  console.log('username', userName);
+  console.log('req', req.body);
   User.findAll({
     where: {
       username: userName
     }
   })
   .then(function(results) {
-    console.log('results', results)
-    res.json(results);
+    res.send(results);
   })
 
 })
 
 app.post('/user', function(req, res) {
-});
 
+})

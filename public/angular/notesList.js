@@ -19,6 +19,7 @@ angular.module('note')
   };
   this.getUser = '';
   this.allTexts = function() {
+    console.log('THIS.GETUSER', this.getUser);
     $http.post('/user', {
       user: this.getUser
     })
