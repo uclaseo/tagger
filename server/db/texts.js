@@ -8,5 +8,6 @@ const Texts = sequelize.define('texts', {
     type: Sequelize.INTEGER()
   }
 })
-Texts.sync();
+// Texts.sync();
+Texts.sync({force: true}) 
 module.exports = Texts;

@@ -2,15 +2,29 @@ angular.module('note')
 .controller('notesListController', function($http) {
   this.user = '';
   this.text = '';
+  this.title = '';
   this.submit = function() {
-    $http.post('/', {
+    $http.post('/text', {
       user: this.user,
+      title: this.title,
       text: this.text
     })
     .then(function successCallback(response) {
       console.log('POST SENT');
       console.log(response);
 
+    }, function errorCallback(response) {
+
+    });
+  };
+  this.getUser = '';
+  this.allTexts = function() {
+    $http.post('/user', {
+      user: this.getUser
+    })
+    .then(function successCallback(response) {
+      console.log('GET ALL USERS');
+      console.log(response);
     }, function errorCallback(response) {
 
     });
