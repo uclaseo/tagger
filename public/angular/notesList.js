@@ -1,13 +1,20 @@
 angular.module('note')
-.controller('notesListController', function() {
-  this.list = [];
-  this.text = 'hell,nkljlo';
+.controller('notesListController', function($http) {
+  this.user = '';
+  this.text = '';
   this.submit = function() {
-    if (this.text) {
-      this.list.push(this.text);
-      this.text = '';
-    }
-  }
+    $http.post('/', {
+      user: this.user,
+      text: this.text
+    })
+    .then(function successCallback(response) {
+      console.log('POST SENT');
+      console.log(response);
+
+    }, function errorCallback(response) {
+
+    });
+  };
 })
 
 .directive('notesList', function() {
@@ -22,7 +29,12 @@ angular.module('note')
   }
 })
 
+// $http.post('url', data, config)
+// .then(function successCallback(response) {
 
+// }, function errorCallback(response) {
+
+// }
 
 
   // angular.module('submitExample', [])

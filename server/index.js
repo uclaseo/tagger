@@ -8,8 +8,13 @@ const bodyParser = require('body-parser');
 // this will force the db/index.js module to run, establishing a database connection.
 // you may or may not need to use the database connection in this index.js file.
 // if you need to use it, assign the return value of require('./db') to a variable.
-const db = require('./db');
-app.use(bodyParser.urlencoded({extended: false}));
+const db = require('./db/config.js');
+const User = require('./db/users.js');
+const Text = require('./db/texts.js');
+
+
+app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, '../public')));
 // create an express instance 
 
@@ -26,7 +31,7 @@ const port = 5050;
 
 app.listen(port, function() {
   console.log('Server is running');
-})
+});
 
 // app.get('/', function(req, res) {
 //   res.sendFile(path.join(__dirname, '../public/index.html'));
@@ -35,8 +40,10 @@ app.listen(port, function() {
 
 
 app.post('/', function(req, res) {
-  var requestBody = req.body;
-  console.log(requestBody);
-  
-  res.send(requestBody);
-})
+  var userName = req.body.user;
+  var text = req.body.text;
+
+  console.log(userName, text);
+  res.send(req.body);
+});
+
